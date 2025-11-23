@@ -1,25 +1,32 @@
 <style>
-  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
-  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
-  *, *:after, *:before { box-sizing: border-box; }
-  body { font-size: 90%; background-color: #000; font-family: "Montserrat", sans-serif; }
-  main { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 96vh; text-align: center; }
-  h1 { color: #e7ebf2; font-size: 6.5rem; letter-spacing: 0.1em; margin: 0.5em 0 0.025em; text-shadow: 0.05em 0.05em 0 rgba(0,0,0,0.25); white-space: nowrap; }
-  @media (max-width: 30rem) { h1 { font-size: 4.5rem; } }
-  h1 > span { -webkit-animation: spooky 2s alternate infinite linear; animation: spooky 2s alternate infinite linear; color: #FFDD00; display: inline-block; }
-  h2 { color: #e7ebf2; margin-bottom: 0.4em; }
-  h2 > span { color: #FFDD00; font-size: 200%; -webkit-animation: spookx 2s alternate infinite linear; animation: spookx 2s alternate infinite linear; display: inline-block; }
-  @-webkit-keyframes spooky { from { transform: translatey(0.08em) scaley(0.95); } to { transform: translatey(-0.08em); } }
-  @keyframes spooky { from { transform: translatey(0.08em) scaley(0.95); } to { transform: translatey(-0.08em); } }
-  @-webkit-keyframes spookx { from { transform: translatex(0.08em) scaley(0.95); } to { transform: translatex(-0.08em); } }
-  @keyframes spookx { from { transform: translatex(0.08em) scaley(0.95); } to { transform: translatex(-0.08em); } }
-  @media (max-width: 700px) { 
-    body { font-size: 110%; } 
-  }
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+*,*:after,*:before{box-sizing:border-box}
+body{font-size:90%;background-color:#000;font-family:"Montserrat",sans-serif}
+main{display:flex;flex-direction:column;align-items:center;justify-content:center;height:96vh;text-align:center}
+h1{color:#e7ebf2;font-size:6.5rem;letter-spacing:.1em;margin:.5em 0 .025em;text-shadow:.05em .05em 0 rgba(0,0,0,.25);white-space:nowrap}
+@media (max-width:30rem){h1{font-size:4.5rem}}
+h1>span{display:inline-block;transition:transform .15s ease-out}
+h1>span:nth-child(1){margin-right:.05em}
+h1>span:nth-child(2){color:#FFDD00;margin-left:.05em}
+h2{color:#e7ebf2;margin-bottom:.4em}
+h2>span{display:inline-block;transition:transform .15s ease-out}
+h2>span:nth-child(1){color:#FFDD00;font-size:200%;margin-right:.15em}
+h2>span:nth-child(2){margin:0 .15em}
+h2>span:nth-child(3){margin-left:.15em}
+
+@media (max-width:700px){body{font-size:110%}}
+button{position:relative;margin-top:2em;padding:.8em 2em;font-size:.88rem;font-family:'Montserrat',sans-serif;background:linear-gradient(135deg,#FFDD00 0%,#FFC700 100%);color:#000;border:none;border-radius:50px;cursor:pointer;font-weight:700;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 15px rgba(255,221,0,.4);transition:all .3s cubic-bezier(.68,-.55,.265,1.55);overflow:hidden}
+button::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.3);transform:translate(-50%,-50%);transition:width .6s,height .6s}
+button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 25px rgba(255,221,0,.6)}
+button:hover::before{width:300px;height:300px}
+button:active{transform:translateY(-1px) scale(1.02);box-shadow:0 4px 15px rgba(255,221,0,.4)}
 </style>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3C!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath fill='%23FFDD00' d='M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z'/%3E%3C/svg%3E">
 <main>
-  <h1>Off<span>line</span></h1>
-  <h2><span>vojcik</span> is offline...</h2>
+  <h1><span class="repel">Off</span><span class="repel">line</span></h1>
+  <h2><span class="repel">vojcik</span><span class="repel">is offline...</span></h2>
+  <button onclick="history.back(1)">Go Back</button>
 </main>
+<script>document.addEventListener('mousemove',e=>{document.querySelectorAll('.repel').forEach(el=>{const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,dx=e.clientX-x,dy=e.clientY-y,d=Math.sqrt(dx*dx+dy*dy),m=300,p=15;if(d<m){const f=(1-d/m)*p,a=Math.atan2(dy,dx);el.style.transform=`translate(${-Math.cos(a)*f}px,${-Math.sin(a)*f}px)`}else el.style.transform='translate(0,0)'})})</script>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="vojcik" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFDD00" data-position="Right" data-x_margin="25" data-y_margin="25"></script>
