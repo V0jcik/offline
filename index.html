@@ -33,6 +33,7 @@ const btn=document.getElementById('backBtn');
 const urlParams=new URLSearchParams(window.location.search);
 const returnUrl=urlParams.get('return');
 btn.onclick=()=>{if(returnUrl){window.location.href=returnUrl}else{history.back(1)}};
+if(returnUrl){const url=new URL(window.location);url.searchParams.delete('return');history.replaceState(null,'',url)}
 </script>
 <script>document.addEventListener('mousemove',e=>{document.querySelectorAll('.repel').forEach(el=>{const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,dx=e.clientX-x,dy=e.clientY-y,d=Math.sqrt(dx*dx+dy*dy),m=300,p=15;if(d<m){const f=(1-d/m)*p,a=Math.atan2(dy,dx);el.style.transform=`translate(${-Math.cos(a)*f}px,${-Math.sin(a)*f}px)`}else el.style.transform='translate(0,0)'})})</script>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="vojcik" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFDD00" data-position="Right" data-x_margin="25" data-y_margin="25"></script>
